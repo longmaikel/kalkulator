@@ -1,5 +1,3 @@
-import java.security.InvalidParameterException;
-
 public class Triangle extends Figure implements Printable
 {
 
@@ -11,6 +9,7 @@ public class Triangle extends Figure implements Printable
         this.a = a;
         this.b = b;
         this.c = c;
+        this.validateInput();
     }
 
 
@@ -45,7 +44,7 @@ public class Triangle extends Figure implements Printable
             return;
         }
 
-        throw new InvalidParameterException();
+        throw new IllegalArgumentException("Boki o podanych długościach nie utworzą trójkąta.");
     }
 
     @Override

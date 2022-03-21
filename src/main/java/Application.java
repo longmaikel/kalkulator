@@ -2,6 +2,10 @@ import java.util.Scanner;
 
 public class Application {
 
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+
     private boolean alive = false;
     private Scanner input;
     private ActionManager actionManager;
@@ -17,21 +21,23 @@ public class Application {
         while (this.alive) {
             this.menu();
             try {
-                int action = this.input.nextInt();
-                this.actionManager.doAction(action);
+                System.out.print("-> ");
+                int actionId = this.input.nextInt();
+                this.actionManager.doAction(actionId);
                 continue;
             } catch (IllegalActionException e) {
-                System.out.println("UPSSSS, wybrana akcja nie istnieje! Wybierz poprawną akcję.");
+                System.out.println(Application.ANSI_YELLOW + "UPSSSS, wybrana akcja nie istnieje! Wybierz poprawną akcję." + Application.ANSI_RESET);
                 continue;
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                System.out.println(Application.ANSI_RED + e.getMessage() + Application.ANSI_RESET);
                 continue;
             } catch (KillApplicationException e) {
                 this.kill();
                 continue;
             } catch (Throwable e) {
-                System.out.println("Fatal Error.");
+                System.out.println(Application.ANSI_RED + "Fatal Error." + Application.ANSI_RESET);
                 this.kill();
+                return;
             }
         }
         this.bye();

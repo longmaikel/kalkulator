@@ -31,7 +31,7 @@ public class Circle extends Figure implements Printable {
     @Override
     protected void validateInput() throws IllegalArgumentException {
         if (this.r <= 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Promień koła musi być większy od zera.");
         }
     }
 

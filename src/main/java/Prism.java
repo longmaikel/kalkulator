@@ -1,4 +1,4 @@
-public class Prism {
+public class Prism implements Printable {
     private Figure figure;
     private double h;
 
@@ -9,9 +9,14 @@ public class Prism {
     }
 
     protected void validateInput() throws IllegalArgumentException {
-        if (this.h <= 0 || !this.figure.isRegular()) {
-            throw new IllegalArgumentException();
+        if (this.h <= 0) {
+            throw new IllegalArgumentException("Wysokość musi być większa od zera.");
         }
+
+        if (!this.figure.isRegular()) {
+            throw new IllegalArgumentException("Podstawa musi być wielokątem prawidłowym.");
+        }
+
     }
 
     public double calculateArea() {
@@ -20,5 +25,10 @@ public class Prism {
 
     public double calculateVolume() {
         return this.figure.calculateArea() * this.h;
+    }
+
+    @Override
+    public void print() {
+        System.out.println("graniastosłup o powierzchni: " + this.calculateArea() + " i objętości: " + this.calculateVolume());
     }
 }

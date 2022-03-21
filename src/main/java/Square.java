@@ -30,7 +30,7 @@ public class Square extends Figure implements Printable {
     @Override
     protected void validateInput() throws IllegalArgumentException {
         if (this.a <= 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Długość boku kwadratu musi być większa od zera.");
         }
     }
 

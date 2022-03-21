@@ -1,5 +1,4 @@
-public class Triangle extends Figure implements Printable
-{
+public class Triangle extends Figure implements Printable {
 
     private double a;
     private double b;
@@ -38,9 +37,9 @@ public class Triangle extends Figure implements Printable
     protected void validateInput() throws IllegalArgumentException {
         if (
                 this.a < this.b + this.c
-                && this.b < this.a + this.c
-                && this.c < this.a + this.b
-        ){
+                        && this.b < this.a + this.c
+                        && this.c < this.a + this.b
+        ) {
             return;
         }
 

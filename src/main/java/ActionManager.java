@@ -41,7 +41,7 @@ public class ActionManager {
         int figureId = this.input.nextInt();
         Figure figure;
 
-        if (ActionManager.ACTION_MAKE_TRIANGLE == figureId){
+        if (ActionManager.ACTION_MAKE_TRIANGLE == figureId) {
             figure = this.makeTriangle();
         } else if (ActionManager.ACTION_MAKE_SQUARE == figureId) {
             figure = this.makeSquare();
@@ -91,7 +91,7 @@ public class ActionManager {
         System.out.print("wprowadź dlugość boku c: ");
         double c = this.input.nextDouble();
 
-        Triangle t = new Triangle(a,b,c);
+        Triangle t = new Triangle(a, b, c);
         t.print();
 
         return t;

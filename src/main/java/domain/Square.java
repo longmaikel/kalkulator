@@ -1,7 +1,5 @@
 package domain;
 
-import domain.Figure;
-import domain.Printable;
 
 public class Square extends Figure implements Printable {
 

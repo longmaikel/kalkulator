@@ -1,6 +1,5 @@
 package domain;
 
-import domain.Figure;
 
 public class Circle extends Figure implements Printable {
 

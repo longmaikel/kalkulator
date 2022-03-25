@@ -1,6 +1,11 @@
+package domain;
+
+import domain.Figure;
+import domain.Printable;
+
 public class Square extends Figure implements Printable {
 
-    private double a;
+    private final double a;
 
     public Square(double a) {
         this.a = a;

@@ -1,3 +1,7 @@
+package application;
+
+import domain.*;
+
 import java.io.PrintStream;
 import java.util.Scanner;
 

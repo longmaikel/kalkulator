@@ -1,6 +1,10 @@
+package domain;
+
+import domain.Figure;
+
 public class Circle extends Figure implements Printable {
 
-    private double r;
+    private final double r;
 
     public Circle(double r) {
         this.r = r;

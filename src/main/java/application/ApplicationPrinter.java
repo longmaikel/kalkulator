@@ -1,3 +1,5 @@
+package application;
+
 import java.io.PrintStream;
 
 public class ApplicationPrinter {

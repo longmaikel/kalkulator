@@ -1,8 +1,13 @@
-public class Prism implements Printable {
-    private Figure figure;
-    private double h;
+package domain;
 
-    protected Prism(Figure figure, double h) {
+import domain.Figure;
+import domain.Printable;
+
+public class Prism implements Printable {
+    private final Figure figure;
+    private final double h;
+
+    public Prism(Figure figure, double h) {
         this.figure = figure;
         this.h = h;
         this.validateInput();

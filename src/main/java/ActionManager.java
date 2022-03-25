@@ -1,3 +1,4 @@
+import java.io.PrintStream;
 import java.util.Scanner;
 
 public class ActionManager {
@@ -8,36 +9,27 @@ public class ActionManager {
     private static final int ACTION_MAKE_PRISM = 4;
     private static final int ACTION_KILL_APPLICATION = 5;
 
-    private Scanner input;
+    private final Scanner input;
+    private final PrintStream output;
 
-    public ActionManager(Scanner input) {
+    public ActionManager(Scanner input, PrintStream output) {
         this.input = input;
+        this.output = output;
     }
 
     public void doAction(int actionId) throws IllegalActionException, IllegalArgumentException, KillApplicationException {
         switch (actionId) {
-            case ActionManager.ACTION_MAKE_TRIANGLE:
-                this.makeTriangle();
-                break;
-            case ActionManager.ACTION_MAKE_SQUARE:
-                this.makeSquare();
-                break;
-            case ActionManager.ACTION_MAKE_CIRCLE:
-                this.makeCircle();
-                break;
-            case ActionManager.ACTION_MAKE_PRISM:
-                this.makePrism();
-                break;
-            case ActionManager.ACTION_KILL_APPLICATION:
-                this.killApplication();
-                break;
-            default:
-                throw new IllegalActionException();
+            case ActionManager.ACTION_MAKE_TRIANGLE -> this.makeTriangle();
+            case ActionManager.ACTION_MAKE_SQUARE -> this.makeSquare();
+            case ActionManager.ACTION_MAKE_CIRCLE -> this.makeCircle();
+            case ActionManager.ACTION_MAKE_PRISM -> this.makePrism();
+            case ActionManager.ACTION_KILL_APPLICATION -> this.killApplication();
+            default -> throw new IllegalActionException();
         }
     }
 
     private Prism makePrism() throws IllegalActionException, IllegalArgumentException {
-        System.out.print("wybierz podstawę (1 - trojkat, 2 - kwadrat, 3 - kolo): ");
+        this.output.print("wybierz podstawę (1 - trojkat, 2 - kwadrat, 3 - kolo): ");
         int figureId = this.input.nextInt();
         Figure figure;
 
@@ -51,7 +43,7 @@ public class ActionManager {
             throw new IllegalActionException();
         }
 
-        System.out.print("wprowadz wysokosc: ");
+        this.output.print("wprowadz wysokosc: ");
         double h = this.input.nextDouble();
 
         Prism p = new Prism(figure, h);
@@ -62,7 +54,7 @@ public class ActionManager {
 
     private Circle makeCircle() throws IllegalArgumentException {
 
-        System.out.print("wprowadź promień: ");
+        this.output.print("wprowadź promień: ");
         double r = this.input.nextDouble();
         Circle c = new Circle(r);
         c.print();
@@ -70,7 +62,7 @@ public class ActionManager {
     }
 
     private Square makeSquare() throws IllegalArgumentException {
-        System.out.print("wprowadź długośc boku: ");
+        this.output.print("wprowadź długośc boku: ");
         double a = this.input.nextDouble();
         Square s = new Square(a);
         s.print();
@@ -82,13 +74,13 @@ public class ActionManager {
     }
 
     private Triangle makeTriangle() throws IllegalArgumentException {
-        System.out.print("wprowadź dlugość boku a: ");
+        this.output.print("wprowadź dlugość boku a: ");
         double a = this.input.nextDouble();
 
-        System.out.print("wprowadź dlugość boku b: ");
+        this.output.print("wprowadź dlugość boku b: ");
         double b = this.input.nextDouble();
 
-        System.out.print("wprowadź dlugość boku c: ");
+        this.output.print("wprowadź dlugość boku c: ");
         double c = this.input.nextDouble();
 
         Triangle t = new Triangle(a, b, c);
